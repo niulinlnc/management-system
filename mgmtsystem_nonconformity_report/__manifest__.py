@@ -9,8 +9,8 @@
 ############################################################################
 {
     "name": "Management Nonconformity Report",
-    "version": "11.0.1.0.0",
-    "author": "Vauxoo,Odoo Community Association (OCA)",
+    "version": "12.0.1.0.0",
+    "author": "OnGood, Vauxoo,Odoo Community Association (OCA)",
     "website": "https://www.vauxoo.com",
     "license": "AGPL-3",
     "category": "Management System",
