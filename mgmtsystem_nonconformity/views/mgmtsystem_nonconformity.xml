@@ -35,7 +35,7 @@
           <filter name="draft" icon="terp-document-new" domain="[('state','=','draft')]" string="Draft" help="Draft/New nonconformities"/>
           <filter name="pending" icon="terp-gtk-media-pause" domain="[('state','in',['analysis','pending'])]" string="Analysis" help="Nonconformities pending review"/>
           <filter name="current" icon="terp-check" domain="[('state','=','open')]" string="In Progress" help="Open Nonconformities"/>
-          <filter icon="terp-camera_test" domain="[('state','=','done')]" string="Closed" help="Closed Nonconformities"/>
+          <filter name="state_done" icon="terp-camera_test" domain="[('state','=','done')]" string="Closed" help="Closed Nonconformities"/>
           <separator orientation="vertical"/>
           <field name="ref"/>
           <field name="create_date"/>
@@ -45,13 +45,13 @@
         </group>
         <newline />
         <group expand="0" string="Group By...">
-          <filter string="Author" icon="gtk-edit" context="{'group_by':'user_id'}"/>
-          <filter string="Responsible" icon="terp-personal" context="{'group_by':'responsible_user_id'}"/>
-          <filter string="Manager" icon="terp-personal+" context="{'group_by':'manager_user_id'}"/>
+          <filter name="group_user_id" string="Author" icon="gtk-edit" context="{'group_by':'user_id'}"/>
+          <filter name="group_responsible_user_id" string="Responsible" icon="terp-personal" context="{'group_by':'responsible_user_id'}"/>
+          <filter name="group_manager_user_id" string="Manager" icon="terp-personal+" context="{'group_by':'manager_user_id'}"/>
           <separator orientation="vertical"/>
-          <filter string="System" icon="gtk-execute" context="{'group_by':'system_id'}"/>
-          <filter string="Partner" icon="terp-personal+" domain="[]" context="{'group_by':'partner_id'}"/>
-          <filter string="Procedure" icon="terp-stock_symbol-selection" context="{'group_by':'procedure_ids'}"/>
+          <filter name="group_system_id" string="System" icon="gtk-execute" context="{'group_by':'system_id'}"/>
+          <filter name="group_partner_id" string="Partner" icon="terp-personal+" domain="[]" context="{'group_by':'partner_id'}"/>
+          <filter name="group_procedur_id" string="Procedure" icon="terp-stock_symbol-selection" context="{'group_by':'procedure_ids'}"/>
           <!--
           <separator orientation="vertical"/>
           <filter string="Origin" icon="terp-idea" context="{'group_by':'origin_ids'}"/>
