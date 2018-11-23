@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <template id="nonconformity_report_translatable">
+            <t t-call="mgmtsystem_nonconformity_report.external_layout">
+                <div class="page">
+                    <div class="col-xs-12">
+                        <div class="text-center">
+                            <h3><strong>G8D Report</strong></h3>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                        <tr>
+                            <td class="col-xs-2" style="border: 1px solid black;"><strong>Champion:</strong></td>
+                            <td class="col-xs-6" style="border: 1px solid black;">
+                                <span t-if="o.responsible_user_id" t-raw="o.responsible_user_id.name"/>
+                            </td>
+                            <td rowspan="2" class="col-xs-1" style="border: 1px solid black;"><strong>Report No.:</strong></td>
+                            <td rowspan="2" class="col-xs-2" style="border: 1px solid black;">
+                                <span t-raw="o.ref or ''"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered table-condensed text-center">
+                        <tr>
+                            <td style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Part No.</strong></td>
+                            <td style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Partner Name</strong></td>
+                            <td style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Date:</strong></td>
+                        </tr>
+                        <tr>
+                            <!-- <td class="col-xs-6">
+                                <span t-raw="o.product_id and o.product_id.name or ''"/>
+                            </td> -->
+                            <!-- <td class="col-md-xs">
+                                <span t-raw="get_part_name(o.product_id, o.partner_id)"/>
+                            </td> -->
+                            <td style="vertical-align: middle; border: 1px solid black;"></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="o.partner_id.name"/></td>
+                            <td style="vertical-align: middle; border: 1px solid black;">
+                                <span t-field="o.create_date" t-field-options='{"widget": "date"}'/>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <!-- D0 -->
+                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                        <tr>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>D0. Emergency Response Actions</strong></th>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Resp.</strong></th>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Date</strong></th>
+                        </tr>
+
+                        <t t-set="lines_ok" t-value="False"/>
+                        <t t-foreach="o.immediate_action_id" t-as="action">
+                            <t t-if="action.type_action == 'immediate'">
+                                <t t-set="lines_ok" t-value="True"/>
+                                <tr>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.description or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.user_id.name or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-field="action.create_date" t-field-options='{"widget": "date"}'/></td>
+                                </tr>
+                            </t>
+                        </t>
+                        <t t-if="not lines_ok">
+                            <tr class="row">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </t>
+                    </table>
+                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                        <tr>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>D1. Team members</strong></th>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>D2. Problem Description</strong></th>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle; border: 1px solid black;">
+                                <t t-foreach="members_team(o)" t-as="member">
+                                    <span t-raw="member.name"/><br/>
+                                </t>
+                            </td>
+                            <td style="vertical-align: middle; border: 1px solid black;">
+                                <span t-raw="o.description or ''"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                        <tr>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>D3. Containment Actions</strong></th>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Resp.</strong></th>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Date</strong></th>
+                        </tr>
+                        <t t-set="lines_ok" t-value="False"/>
+                        <t t-foreach="o.action_ids" t-as="action">
+                            <t t-if="action.type_action == 'immediate'">
+                                <t t-set="lines_ok" t-value="True"/>
+                                <tr>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.description or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.user_id.name or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-field="action.create_date" t-field-options='{"widget": "date"}'/></td>
+                                </tr>
+                            </t>
+                        </t>
+                        <t t-if="not lines_ok">
+                            <tr class="row">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </t>
+                    </table>
+                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                        <tr>
+                            <td colspan="3" style="vertical-align: middle; border: 1px solid black;"><strong>D4. Root Cause Analysis</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle; border: 1px solid black;"><span>No.</span></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Cause</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Description</strong></td>
+                        </tr>
+                        <t t-foreach="o.cause_ids" t-as="cause">
+                            <tr>
+                                <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="cause.sequence or ''"/></td>
+                                <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="cause.name or ''"/></td>
+                                <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="cause.description or ''"/></td>
+                            </tr>
+                        </t>
+                    </table>
+                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                        <tr>
+                            <td colspan="5" style="vertical-align: middle; border: 1px solid black;"><strong>D5. Permanent Corrective Actions</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle; border: 1px solid black;"><span>No.</span></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Action</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Resp.</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Date</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Close Date</strong></td>
+                        </tr>
+                        <t t-set="lines_ok" t-value="False"/>
+                        <t t-foreach="o.action_ids" t-as="action">
+                            <t t-if="action.type_action in ('prevention', 'correction', 'improvement')">
+                                <t t-set="lines_ok" t-value="True"/>
+                                <tr>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.reference or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.description or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.user_id.name or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-field="action.create_date" t-field-options='{"widget": "date"}'/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-field="action.date_deadline" t-field-options='{"widget": "date"}'/></td>
+                                </tr>
+                            </t>
+                        </t>
+                        <t t-if="not lines_ok">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </t>
+                    </table>
+                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                        <tr>
+                            <th colspan="5" style="vertical-align: middle; border: 1px solid black;"><strong>Training</strong></th>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle; border: 1px solid black;"><span>No.</span></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Action</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Resp.</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Date</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Close Date</strong></td>
+                        </tr>
+                        <t t-set="lines_ok" t-value="False"/>
+                        <t t-foreach="o.action_ids" t-as="action">
+                            <t t-if="action.type_action == 'training'">
+                                <t t-set="lines_ok" t-value="True"/>
+                                <tr>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.reference or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.description or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.user_id.name or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-field="action.create_date" t-field-options='{"widget": "date"}'/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-field="action.date_deadline" t-field-options='{"widget": "date"}'/></td>
+                                </tr>
+                            </t>
+                        </t>
+                        <t t-if="not lines_ok">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </t>
+                    </table>
+                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                        <!-- <tr>
+                            <td style="vertical-align: middle; border: 1px solid black;">
+                                <strong>D6. Verification and effectiveness of actions</strong>
+                            </td>
+                        </tr> -->
+                        <tr>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>D6. Verification and effectiveness of actions</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><span>Close Date</span></td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle; border: 1px solid black;"><span t-field="o.evaluation_comments"/></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><span t-field="o.closing_date"/></td>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                        <tr>
+                            <th colspan="2" style="vertical-align: middle; border: 1px solid black;">
+                                <strong>D7. Controls and Preventions</strong>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Can be implemented at other product or Process?</span></th>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Error Proofing Required?</span></th>
+                        </tr>
+                        <tr>
+                            <td><span> </span></td>
+                            <td><span> </span></td>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                        <tr>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Documents to be Updated</strong></th>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Undated</span></th>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Details</span></th>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Resp.</span></th>
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Date</span></th>
+                        </tr>
+                        <tr>
+                            <td><strong></strong></td>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                        <tr>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Lessons Learned</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>D8. Team Recognition</strong></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <!-- Templates -->
+        <template id="nonconformity_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="mgmtsystem_nonconformity_report.nonconformity_report_translatable" t-lang="o.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <report
+            id="report_nonconformity_8ds"
+            model="mgmtsystem.nonconformity"
+            name="mgmtsystem_nonconformity_report.nonconformity_report"
+            string="Nonconformity"
+            report_type="qweb-pdf"
+            paperformat="mgmtsystem_nonconformity_report.paperformat_nonconformity"
+            />
+
+</odoo>
