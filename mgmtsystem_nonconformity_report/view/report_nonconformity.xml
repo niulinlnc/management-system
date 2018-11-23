@@ -161,7 +161,7 @@
                             </tr>
                         </t>
                     </table>
-                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                    <!-- <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
                         <tr>
                             <th colspan="5" style="vertical-align: middle; border: 1px solid black;"><strong>Training</strong></th>
                         </tr>
@@ -194,7 +194,7 @@
                                 <td></td>
                             </tr>
                         </t>
-                    </table>
+                    </table> -->
                     <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
                         <!-- <tr>
                             <td style="vertical-align: middle; border: 1px solid black;">
