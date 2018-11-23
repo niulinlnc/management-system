@@ -87,7 +87,7 @@
                 <search string="Reviews">
                     <group>
                         <filter name="current" domain="[('state','=','open')]" string="Open" help="Open Reviews"/>
-                        <filter domain="[('state','=','done')]" string="Closed" help="Closed Reviews"/>
+                        <filter name="state_done" domain="[('state','=','done')]" string="Closed" help="Closed Reviews"/>
                         <separator orientation="vertical"/>
                         <field name="name"/>
                         <field name="date"/>
