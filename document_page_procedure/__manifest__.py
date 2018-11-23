@@ -3,8 +3,8 @@
 
 {
     "name": "Document Management - Wiki - Procedures",
-    "version": "11.0.1.0.0",
-    "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+    "version": "12.0.1.0.0",
+    "author": "OnGood, Savoir-faire Linux,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/management-system",
     "license": "AGPL-3",
     "category": "Generic Modules/Others",
