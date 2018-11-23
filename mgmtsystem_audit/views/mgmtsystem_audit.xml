@@ -90,7 +90,7 @@
                 <search string="Audits">
                     <group>
                         <filter name="current" icon="terp-document-new" domain="[('state','=','open')]" string="Open" help="Open Audits"/>
-                        <filter icon="terp-camera_test" domain="[('state','=','done')]" string="Closed" help="Closed Audits"/>
+                        <filter name="state_done" icon="terp-camera_test" domain="[('state','=','done')]" string="Closed" help="Closed Audits"/>
                         <separator orientation="vertical"/>
                         <field name="name"/>
                         <field name="date"/>
