@@ -38,7 +38,7 @@
                     <separator/>
                     <filter string="Unread Messages" name="message_needaction"
                             domain="[('message_needaction','=',True)]"/>
-                    <filter string="Archived" name="inactive"
+                    <filter string="Archived" name="inactive" name="active_false"
                             domain="[('active','=',False)]"/>
                     <separator/>
                     <filter string="My Activities" name="activities_my"
