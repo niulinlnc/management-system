@@ -34,7 +34,7 @@
                     <filter string="Pending" name="pending" domain="[('stage_id.is_ending', '=', False)]"/>
                     <separator/>
                     <filter string="My Actions" name="my_actions" domain="[('user_id','=',uid)]"/>
-                    <filter string="My Followed Actions" domain="[('message_is_follower', '=', True)]" />
+                    <filter name="message_is_follower" string="My Followed Actions" domain="[('message_is_follower', '=', True)]" />
                     <separator/>
                     <filter string="Unread Messages" name="message_needaction"
                             domain="[('message_needaction','=',True)]"/>
@@ -52,10 +52,10 @@
                     <filter string="Future Activities" name="activities_upcoming_all"
                             domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"/>
                     <group expand="0" string="Group By">
-                        <filter string="User" context="{'group_by':'user_id'}"/>
-                        <filter string="Type" context="{'group_by':'type_action'}"/>
-                        <filter string="Stage" name="Stage" context="{'group_by':'stage_id'}"/>
-                        <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                        <filter name="group_user_id" string="User" context="{'group_by':'user_id'}"/>
+                        <filter name="group_type_action" string="Type" context="{'group_by':'type_action'}"/>
+                        <filter name="group_stage_id" string="Stage" name="Stage" context="{'group_by':'stage_id'}"/>
+                        <filter name="group_company_id" string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
                         <separator/>
                         <filter string="Last Message" name="group_message_last_post" context="{'group_by':'message_last_post:week'}" invisible="1"/>
                     </group>
