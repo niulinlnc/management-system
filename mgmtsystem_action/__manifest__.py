@@ -3,8 +3,8 @@
 
 {
     "name": "Management System - Action",
-    "version": "11.0.2.0.0",
-    "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+    "version": "12.0.1.0.0",
+    "author": "OnGood, Savoir-faire Linux,Odoo Community Association (OCA)",
     "website": "http://www.savoirfairelinux.com",
     "license": "AGPL-3",
     "category": "Management System",
