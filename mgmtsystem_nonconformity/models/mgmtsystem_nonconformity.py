@@ -85,7 +85,7 @@ class MgmtsystemNonconformity(models.Model):
         'procedure_id',
         'Procedure',
     )
-    description = fields.Text('Description', required=True)
+    description = fields.Html('Description', required=True)
     system_id = fields.Many2one('mgmtsystem.system', 'System')
     stage_id = fields.Many2one(
         'mgmtsystem.nonconformity.stage',
