@@ -62,18 +62,18 @@
                         </t>
                     </table>
 
-                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                    <table class="table table-bordered table-condensed" stype="border: 2px solid black !important;">
                         <tr>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>D1. Team members</strong></th>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>D2. Problem Description</strong></th>
                         </tr>
                         <tr>
-                            <td style="vertical-align: middle; border: 1px solid black;">
+                            <td style="border: 1px solid black;">
                                 <t t-foreach="members_team(o)" t-as="member">
                                     <span t-raw="member.name"/><br/>
                                 </t>
                             </td>
-                            <td style="vertical-align: middle; border: 1px solid black;">
+                            <td style="border: 1px solid black;">
                                 <span t-raw="o.description or ''"/>
                             </td>
                         </tr>
