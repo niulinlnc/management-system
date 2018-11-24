@@ -50,7 +50,6 @@
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Date</strong></th>
                         </tr>
 
-                        <t t-set="lines_ok" t-value="False"/>
                         <t t-foreach="o.immediate_action_id" t-as="action">
                             <t t-if="action.type_action == 'immediate'">
                                 <t t-set="lines_ok" t-value="True"/>
@@ -61,14 +60,8 @@
                                 </tr>
                             </t>
                         </t>
-                        <t t-if="not lines_ok">
-                            <tr class="row">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </t>
                     </table>
+
                     <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
                         <tr>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>D1. Team members</strong></th>
@@ -115,7 +108,7 @@
                             <td colspan="3" style="vertical-align: middle; border: 1px solid black;"><strong>D4. Root Cause Analysis</strong></td>
                         </tr>
                         <tr>
-                            <td style="vertical-align: middle; border: 1px solid black;"><span>No.</span></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>No.</strong></td>
                             <td style="vertical-align: middle; border: 1px solid black;"><strong>Cause</strong></td>
                             <td style="vertical-align: middle; border: 1px solid black;"><strong>Description</strong></td>
                         </tr>
@@ -132,7 +125,7 @@
                             <td colspan="5" style="vertical-align: middle; border: 1px solid black;"><strong>D5. Permanent Corrective Actions</strong></td>
                         </tr>
                         <tr>
-                            <td style="vertical-align: middle; border: 1px solid black;"><span>No.</span></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>No.</strong></td>
                             <td style="vertical-align: middle; border: 1px solid black;"><strong>Action</strong></td>
                             <td style="vertical-align: middle; border: 1px solid black;"><strong>Resp.</strong></td>
                             <td style="vertical-align: middle; border: 1px solid black;"><strong>Date</strong></td>

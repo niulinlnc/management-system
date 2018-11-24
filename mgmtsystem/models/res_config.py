@@ -35,6 +35,12 @@ class MgmtsystemConfigSettings(models.TransientModel):
         '-This installs the module mgmtsystem_information_security.'
     )
 
+    module_mgmtsystem_sa8000 = fields.Boolean(
+        'Social Accountability 8000 International standard',
+        help='Provide Social Accountability 8000 International standard tools.\n'
+        '-This installs the module mgmtsystem_sa8000.'
+    )
+
     # Applications
 
     module_mgmtsystem_action = fields.Boolean(
