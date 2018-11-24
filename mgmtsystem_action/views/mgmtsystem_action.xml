@@ -38,7 +38,7 @@
                     <separator/>
                     <filter string="Unread Messages" name="message_needaction"
                             domain="[('message_needaction','=',True)]"/>
-                    <filter string="Archived" name="inactive" name="active_false"
+                    <filter string="Archived" name="inactive"
                             domain="[('active','=',False)]"/>
                     <separator/>
                     <filter string="My Activities" name="activities_my"
@@ -54,7 +54,7 @@
                     <group expand="0" string="Group By">
                         <filter name="group_user_id" string="User" context="{'group_by':'user_id'}"/>
                         <filter name="group_type_action" string="Type" context="{'group_by':'type_action'}"/>
-                        <filter name="group_stage_id" string="Stage" name="Stage" context="{'group_by':'stage_id'}"/>
+                        <filter string="Stage" name="Stage" context="{'group_by':'stage_id'}"/>
                         <filter name="group_company_id" string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
                         <separator/>
                         <filter string="Last Message" name="group_message_last_post" context="{'group_by':'message_last_post:week'}" invisible="1"/>

@@ -12,7 +12,7 @@
         'security/ir.model.access.csv',
         'security/mgmtsystem_audit_security.xml',
         'data/audit_sequence.xml',
-        'data/audit_automated_actions.xml',
+        # 'data/audit_automated_actions.xml',
         'views/mgmtsystem_audit.xml',
         'report/audit.xml',
         'report/verification.xml',

@@ -76,7 +76,7 @@ class MgmtsystemAction(models.Model):
         compute=_compute_number_of_days_to_close,
         store=True)
 
-    reference = fields.Char('Reference', required=True, readonly=True)
+    reference = fields.Char('Reference', required=True, readonly=True, default="NEW")
 
     user_id = fields.Many2one(
         'res.users',
