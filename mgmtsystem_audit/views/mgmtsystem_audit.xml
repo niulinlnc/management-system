@@ -140,7 +140,20 @@
                                 <field name="imp_opp_ids" domain="[('type_action','=','improvement')]" nolabel="1" attrs="{'readonly':[('state','=','done')]}"/>
                             </page>
                             <page string="Nonconformities">
-                                <field name="nonconformity_ids" nolabel="1" attrs="{'readonly':[('state','=','done')]}"/>
+                                <field name="nonconformity_ids" nolabel="1" attrs="{'readonly':[('state','=','done')]}">
+                                    <tree string="Non-Conformities" create="1" delete="1">
+                                        <field name="ref"/>
+                                        <field name="create_date"/>
+                                        <field name="partner_id"/>
+                                        <field name="description"/>
+                                        <field name="user_id"/>
+                                        <field name="responsible_user_id"/>
+                                        <field name="manager_user_id"/>
+                                        <field name="system_id"/>
+                                        <field name="company_id" groups="base.group_multi_company"/>
+                                        <field name="stage_id"/>
+                                    </tree>
+                                </field>
                             </page>
                         </notebook>
                     </sheet>

@@ -183,29 +183,28 @@
 
               <page string="Actions" attrs="{'invisible':[('state','in',['draft','analysis','cancel'])]}">
                 <separator string="Action Plan"/>
-                <field name="action_ids" attrs="{'readonly':[('state','not in',['pending'])]}"/>
-                    <!-- <tree string="Action">
-                        <field name="reference"/>
-                        <field name="name"/>
-                        <field name="type_action"/>
-                        <field name="user_id"/>
-                        <field name="date_deadline"/>
-                        <field name="stage_id"/>
-                        <field name="company_id" groups="base.group_multi_company"/>
-                    </tree>
-                </field> -->
-
+                <field name="action_ids" attrs="{'readonly':[('state','not in',['pending'])]}">
+                  <tree string="Action Plan" create="1" delete="1">
+                    <field name="reference"/>
+                    <field name="name"/>
+                    <field name="type_action"/>
+                    <field name="user_id"/>
+                    <field name="date_deadline"/>
+                    <field name="stage_id"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                  </tree>
+                </field>
                 <group string="Plan Review">
-                 <group>
-                   <field name="action_comments" attrs="{'readonly':[('state','not in',['pending'])]}" nolabel="1" placeholder="Action Plan Comments"/>
-                 </group>
-               </group>
+                  <group>
+                    <field name="action_comments" attrs="{'readonly':[('state','not in',['pending'])]}" nolabel="1" placeholder="Action Plan Comments"/>
+                  </group>
+                </group>
 
-               <group attrs="{'invisible':[('state','not in',['open','done'])]}" string="Effectiveness Review">
-                 <group>
-                   <field name="evaluation_comments" attrs="{'readonly':[('state','not in',['open'])]}" nolabel="1" placeholder="Evaluation Comments"/>
-                 </group>
-             </group>
+                <group attrs="{'invisible':[('state','not in',['open','done'])]}" string="Effectiveness Review">
+                  <group>
+                    <field name="evaluation_comments" attrs="{'readonly':[('state','not in',['open'])]}" nolabel="1" placeholder="Evaluation Comments"/>
+                  </group>
+                </group>
               </page>
 
             </notebook>
