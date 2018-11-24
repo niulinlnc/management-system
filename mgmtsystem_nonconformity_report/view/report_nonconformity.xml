@@ -74,7 +74,13 @@
                                 </t>
                             </td>
                             <td style="border: 1px solid black;">
-                                <span t-raw="o.description or ''"/>
+                                <div>
+                                   <li>Origin:</li>
+                                   <t t-foreach="o.origin_ids" t-as="origin"> 
+                                       <li style="list-style:none; margin-left:13px;"><span t-raw="origin.name or ''"/></li>
+                                   </t>
+                                </div>
+                                <div><span t-raw="o.description or ''"/></div>
                             </td>
                         </tr>
                     </table>
@@ -262,7 +268,7 @@
             id="report_nonconformity_8ds"
             model="mgmtsystem.nonconformity"
             name="mgmtsystem_nonconformity_report.nonconformity_report"
-            string="Nonconformity"
+            string="G8D Report"
             report_type="qweb-pdf"
             paperformat="mgmtsystem_nonconformity_report.paperformat_nonconformity"
             />
