@@ -9,7 +9,7 @@
                             <h3><strong>G8D Report</strong></h3>
                         </div>
                     </div>
-                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                    <table class="table table-bordered table-condensed text-center">
                         <tr>
                             <td class="col-xs-2" style="border: 1px solid black;"><strong>Champion:</strong></td>
                             <td class="col-xs-6" style="border: 1px solid black;">
@@ -43,7 +43,7 @@
                     </table>
                     <br/>
                     <!-- D0 -->
-                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                    <table class="table table-bordered table-condensed text-center">
                         <tr>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>D0. Emergency Response Actions</strong></th>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Resp.</strong></th>
@@ -62,7 +62,7 @@
                         </t>
                     </table>
 
-                    <table class="table table-bordered table-condensed" stype="border: 2px solid black !important;">
+                    <table class="table table-bordered table-condensed">
                         <tr>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>D1. Team members</strong></th>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>D2. Problem Description</strong></th>
@@ -84,7 +84,7 @@
                             </td>
                         </tr>
                     </table>
-                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                    <table class="table table-bordered table-condensed text-center">
                         <tr>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>D3. Containment Actions</strong></th>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Resp.</strong></th>
@@ -109,7 +109,7 @@
                             </tr>
                         </t>
                     </table>
-                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                    <table class="table table-bordered table-condensed text-center">
                         <tr>
                             <td colspan="3" style="vertical-align: middle; border: 1px solid black;"><strong>D4. Root Cause Analysis</strong></td>
                         </tr>
@@ -126,7 +126,7 @@
                             </tr>
                         </t>
                     </table>
-                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                    <table class="table table-bordered table-condensed text-center">
                         <tr>
                             <td colspan="5" style="vertical-align: middle; border: 1px solid black;"><strong>D5. Permanent Corrective Actions</strong></td>
                         </tr>
@@ -194,7 +194,7 @@
                             </tr>
                         </t>
                     </table> -->
-                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                    <table class="table table-bordered table-condensed text-center">
                         <!-- <tr>
                             <td style="vertical-align: middle; border: 1px solid black;">
                                 <strong>D6. Verification and effectiveness of actions</strong>
@@ -209,7 +209,7 @@
                             <td style="vertical-align: middle; border: 1px solid black;"><span t-field="o.closing_date"/></td>
                         </tr>
                     </table>
-                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                    <table class="table table-bordered table-condensed text-center">
                         <tr>
                             <th colspan="2" style="vertical-align: middle; border: 1px solid black;">
                                 <strong>D7. Controls and Preventions</strong>
@@ -224,7 +224,7 @@
                             <td><span> </span></td>
                         </tr>
                     </table>
-                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                    <table class="table table-bordered table-condensed text-center">
                         <tr>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Documents to be Updated</strong></th>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Undated</span></th>
@@ -240,7 +240,7 @@
                             <td><span></span></td>
                         </tr>
                     </table>
-                    <table class="table table-bordered table-condensed text-center" stype="border: 2px solid black !important;">
+                    <table class="table table-bordered table-condensed text-center">
                         <tr>
                             <td style="vertical-align: middle; border: 1px solid black;"><strong>Lessons Learned</strong></td>
                             <td style="vertical-align: middle; border: 1px solid black;"><strong>D8. Team Recognition</strong></td>
