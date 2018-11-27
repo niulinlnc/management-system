@@ -124,7 +124,7 @@ class MgmtsystemNonconformity(models.Model):
         'mgmtsystem.nonconformity.severity',
         'Severity',
     )
-    analysis = fields.Text('Analysis')
+    analysis = fields.Html('Analysis')
     immediate_action_id = fields.Many2one(
         'mgmtsystem.action',
         'Immediate action',

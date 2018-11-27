@@ -114,6 +114,10 @@
                             <td colspan="3" style="vertical-align: middle; border: 1px solid black;"><strong>D4. Root Cause Analysis</strong></td>
                         </tr>
                         <tr>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Analysis</strong></td>
+                            <td colspan="2" style="text-align: left; vertical-align: middle; border: 1px solid black;"><span t-raw="o.analysis or ''"/></td>
+                        </tr>
+                        <tr>
                             <td style="vertical-align: middle; border: 1px solid black;"><strong>No.</strong></td>
                             <td style="vertical-align: middle; border: 1px solid black;"><strong>Cause</strong></td>
                             <td style="vertical-align: middle; border: 1px solid black;"><strong>Description</strong></td>
