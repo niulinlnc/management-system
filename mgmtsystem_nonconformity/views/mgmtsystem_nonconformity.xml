@@ -155,7 +155,7 @@
               </page>
 
               <page string="Procedures">
-                <field name="procedure_ids" attrs="{'readonly':[('state','not in',['draft','analysis'])]}" domain="[('parent_id','in',('Procedure','Environmental Aspect','Manuals'))]"/>
+                <field name="procedure_ids" attrs="{'readonly':[('state','not in',['draft','analysis'])]}" domain="[('parent_id','in',('Procedure','Work Instructions','Environmental Aspect','Manuals'))]"/>
               </page>
 
               <page string="Causes and Analysis" attrs="{'invisible':[('state','in',['draft','cancel'])]}">
@@ -199,11 +199,21 @@
                     <field name="action_comments" attrs="{'readonly':[('state','not in',['pending'])]}" nolabel="1" placeholder="Action Plan Comments"/>
                   </group>
                 </group>
-
                 <group attrs="{'invisible':[('state','not in',['open','done'])]}" string="Effectiveness Review">
                   <group>
                     <field name="evaluation_comments" attrs="{'readonly':[('state','not in',['open'])]}" nolabel="1" placeholder="Evaluation Comments"/>
                   </group>
+                </group>
+                <group string="Evaluation by">
+                  <group>
+                    <field name="evaluation_user_id" attrs="{'readonly':[('state','not in',['open'])]}" nolabel="1" placeholder="Evaluation By"/>
+                  </group>
+                </group>
+                <group string="Lessons Learned">
+                  <field name="lessons_learned" attrs="{'readonly':[('state','not in',['open'])]}" nolabel="1" placeholder="Lessons Learned"/>
+                </group>
+                <group string="Team Recognition">
+                  <field name="team_recognition" attrs="{'readonly':[('state','not in',['open'])]}" nolabel="1" placeholder="Team Recognition"/>
                 </group>
               </page>
 

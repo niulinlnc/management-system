@@ -149,6 +149,23 @@ class MgmtsystemNonconformity(models.Model):
         'Evaluation Comments',
         help="Conclusions from the last effectiveness evaluation.",
     )
+    evaluation_user_id = fields.Many2one(
+        'res.users',
+        'Evaluation by',
+        readonly=False,
+    )
+
+    # 5. Lessons Learned
+    lessons_learned = fields.Html(
+        'Lessons Learned',
+        help="Lessons Learned.",
+    )
+
+    # 6. Team Recognition
+    team_recognition = fields.Html(
+        'Team Recognition',
+        help="Team Recognition.",
+    )
 
     # Multi-company
     company_id = fields.Many2one(

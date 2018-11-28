@@ -12,11 +12,15 @@
                     <table class="table table-bordered table-condensed text-center">
                         <tr>
                             <td class="col-xs-2" style="border: 1px solid black;"><strong>Champion:</strong></td>
-                            <td class="col-xs-6" style="border: 1px solid black;">
+                            <td class="col-xs-2" style="border: 1px solid black;">
                                 <span t-if="o.responsible_user_id" t-raw="o.responsible_user_id.name"/>
                             </td>
-                            <td rowspan="2" class="col-xs-1" style="border: 1px solid black;"><strong>Report No.:</strong></td>
-                            <td rowspan="2" class="col-xs-2" style="border: 1px solid black;">
+                            <td class="col-xs-2" style="border: 1px solid black;"><strong>Severity:</strong></td>
+                            <td class="col-xs-2" style="border: 1px solid black;">
+                                <span t-raw="o.severity_id.name or ''"/>
+                            </td>
+                            <td class="col-xs-2" style="border: 1px solid black;"><strong>Report No.:</strong></td>
+                            <td class="col-xs-2" style="border: 1px solid black;">
                                 <span t-raw="o.ref or ''"/>
                             </td>
                         </tr>
@@ -54,7 +58,7 @@
                             <t t-if="action.type_action == 'immediate'">
                                 <t t-set="lines_ok" t-value="True"/>
                                 <tr>
-                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.description or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.name or ''"/></td>
                                     <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.user_id.name or ''"/></td>
                                     <td style="vertical-align: middle; border: 1px solid black;"><span t-field="action.create_date" t-field-options='{"widget": "date"}'/></td>
                                 </tr>
@@ -95,7 +99,7 @@
                             <t t-if="action.type_action == 'immediate'">
                                 <t t-set="lines_ok" t-value="True"/>
                                 <tr>
-                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.description or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.name or ''"/></td>
                                     <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.user_id.name or ''"/></td>
                                     <td style="vertical-align: middle; border: 1px solid black;"><span t-field="action.create_date" t-field-options='{"widget": "date"}'/></td>
                                 </tr>
@@ -143,11 +147,11 @@
                         </tr>
                         <t t-set="lines_ok" t-value="False"/>
                         <t t-foreach="o.action_ids" t-as="action">
-                            <t t-if="action.type_action in ('prevention', 'correction', 'improvement')">
+                            <t t-if="action.type_action == 'correction'">
                                 <t t-set="lines_ok" t-value="True"/>
                                 <tr>
                                     <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.reference or ''"/></td>
-                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.description or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.name or ''"/></td>
                                     <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.user_id.name or ''"/></td>
                                     <td style="vertical-align: middle; border: 1px solid black;"><span t-field="action.create_date" t-field-options='{"widget": "date"}'/></td>
                                     <td style="vertical-align: middle; border: 1px solid black;"><span t-field="action.date_deadline" t-field-options='{"widget": "date"}'/></td>
@@ -206,19 +210,51 @@
                         </tr> -->
                         <tr>
                             <td style="vertical-align: middle; border: 1px solid black;"><strong>D6. Verification and effectiveness of actions</strong></td>
-                            <td style="vertical-align: middle; border: 1px solid black;"><span>Close Date</span></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Evaluation By</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Close Date</strong></td>
                         </tr>
                         <tr>
                             <td style="vertical-align: middle; border: 1px solid black;"><span t-field="o.evaluation_comments"/></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><span t-field="o.evaluation_user_id.name"/></td>
                             <td style="vertical-align: middle; border: 1px solid black;"><span t-field="o.closing_date"/></td>
                         </tr>
                     </table>
                     <table class="table table-bordered table-condensed text-center">
                         <tr>
-                            <th colspan="2" style="vertical-align: middle; border: 1px solid black;">
+                            <th colspan="5" style="vertical-align: middle; border: 1px solid black;">
                                 <strong>D7. Controls and Preventions</strong>
                             </th>
                         </tr>
+                        <tr>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>No.</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Action</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Resp.</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Date</strong></td>
+                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Close Date</strong></td>
+                        </tr>
+                        <t t-set="lines_ok" t-value="False"/>
+                        <t t-foreach="o.action_ids" t-as="action">
+                            <t t-if="action.type_action in ('prevention', 'improvement')">
+                                <t t-set="lines_ok" t-value="True"/>
+                                <tr>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.reference or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.name or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="action.user_id.name or ''"/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-field="action.create_date" t-field-options='{"widget": "date"}'/></td>
+                                    <td style="vertical-align: middle; border: 1px solid black;"><span t-field="action.date_deadline" t-field-options='{"widget": "date"}'/></td>
+                                </tr>
+                            </t>
+                        </t>
+                        <t t-if="not lines_ok">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </t>
+                    <!-- 
                         <tr>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Can be implemented at other product or Process?</span></th>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Error Proofing Required?</span></th>
@@ -226,32 +262,34 @@
                         <tr>
                             <td><span> </span></td>
                             <td><span> </span></td>
-                        </tr>
+                        </tr> -->
                     </table>
                     <table class="table table-bordered table-condensed text-center">
                         <tr>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Documents to be Updated</strong></th>
-                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Undated</span></th>
-                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Details</span></th>
+                            <!-- <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Undated</span></th> -->
+                            <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Summary</span></th>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Resp.</span></th>
                             <th style="text-align: center; vertical-align: middle; border: 1px solid black;"><span>Date</span></th>
                         </tr>
                         <tr>
-                            <td><strong></strong></td>
-                            <td><span></span></td>
-                            <td><span></span></td>
-                            <td><span></span></td>
-                            <td><span></span></td>
+                            <t t-foreach="o.procedure_ids" t-as="procedure">
+                                <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="procedure.name or ''"/></td>
+                                <!-- <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="procedure.name or ''"/></td> -->
+                                <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="procedure.draft_summary or ''"/></td>
+                                <td style="vertical-align: middle; border: 1px solid black;"><span t-raw="procedure.content_uid.name or ''"/></td>
+                                <td style="vertical-align: middle; border: 1px solid black;"><span t-field="procedure.content_date" t-field-options='{"widget": "date"}'/></td>
+                            </t>
                         </tr>
                     </table>
-                    <table class="table table-bordered table-condensed text-center">
+                    <table class="table table-bordered table-condensed">
                         <tr>
-                            <td style="vertical-align: middle; border: 1px solid black;"><strong>Lessons Learned</strong></td>
-                            <td style="vertical-align: middle; border: 1px solid black;"><strong>D8. Team Recognition</strong></td>
+                            <td style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>Lessons Learned</strong></td>
+                            <td style="text-align: center; vertical-align: middle; border: 1px solid black;"><strong>D8. Team Recognition</strong></td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
+                            <td style="border: 1px solid black;"><span t-field="o.lessons_learned"/></td>
+                            <td style="border: 1px solid black;"><span t-field="o.team_recognition"/></td>
                         </tr>
                     </table>
                 </div>
